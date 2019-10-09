@@ -1,13 +1,10 @@
 const axios = require("axios")
 class HttpRequest {
-  // eslint-disable-next-line no-undef// baseUrl = baseURL
   constructor() {
-    // this.baseUrl = baseUrl
     this.queue = {}
   }
-  getInsideConfig() { // 全局的配置
+  getInsideConfig() {
     const config = {
-      // baseURL: this.baseUrl,
       headers: {
         "Content-Type": "application/json"
       }
@@ -16,12 +13,9 @@ class HttpRequest {
   }
   destroy(url) {
     delete this.queue[url]
-    if (!Object.keys(this.queue).length) {
-      // Spin.hide()
-    }
+    if (!Object.keys(this.queue).length) {}
   }
   interceptors(instance, url) {
-    // 请求拦截
     instance
       .interceptors
       .request
@@ -31,13 +25,11 @@ class HttpRequest {
       }, error => {
         return Promise.reject(error)
       })
-    // 响应拦截
     instance
       .interceptors
       .response
       .use(res => {
         this.destroy(url)
-        // console.log(res)
         const {data, status} = res
         return {data, status}
       }, error => {
@@ -59,7 +51,6 @@ class HttpRequest {
             }
           }
         }
-        // addErrorLog(errorInfo)
         return Promise.reject(error)
       })
   }
@@ -68,8 +59,6 @@ class HttpRequest {
     options = Object.assign(this.getInsideConfig(), options)
     console.log(options)
     this.interceptors(instance, options.url)
-    // console.log(options)
-
     return instance(options)
   }
 }

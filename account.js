@@ -2,7 +2,9 @@ const jsSHA = require("jssha");
 
 const {randomBytes} = require('crypto')
 const secp256k1 = require('secp256k1')
-
+/**
+ * @return {object}
+ */
 function createdPrivKeyAndpubKeyAndaddr() {
 
   let privKey
@@ -23,6 +25,10 @@ function createdPrivKeyAndpubKeyAndaddr() {
   }
 
 }
+/**
+ *
+ * @param {buffer} buf
+ */
 const bufferTobytes = (buf) => {
   var result = [];
   for (const value of buf.values()) {
@@ -30,7 +36,11 @@ const bufferTobytes = (buf) => {
   }
   return result
 }
-
+/**
+ *
+ * @param {*} data
+ * @param {*} _type
+ */
 const Encode = (data, _type) => {
   var result = [];
   if (data.length % 2 !== 0) {
@@ -46,7 +56,10 @@ const Encode = (data, _type) => {
   result = result.concat(bufferTobytes(dataTmp))
   return result
 }
-
+/**
+ *
+ * @param {objet[string]} param0
+ */
 const genHash = ({
   ...options
 }) => {
@@ -99,7 +112,10 @@ const genHash = ({
   SHA_256.getHash("HEX")
   return "0x" + SHA_256.getHash("HEX")
 }
-
+/**
+ *
+ * @param {string} n
+ */
 const NewAssetFromString = (n) => {
   let unit = n
     .replace(/[^a-zA-Z]/ig, "")

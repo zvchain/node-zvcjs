@@ -1,62 +1,67 @@
 const zvcjs = require('./index');
+//api rpc
 zvcjs
   .api
   .newApi('https://api.jokechain.cc:8101/')
-/*
-api
+zvcjs
+  .api
   .GetblockHeight()
   .then(res => {
     console.log(res)
   })
-api
+zvcjs
+  .api
   .GetBlockByHeight(298253)
   .then(res => {
     console.log(res)
   })
   .catch(err => {
-    console.log("错误请求")
+    console.log("Wrong reques")
   });
-api
+zvcjs
+  .api
   .GetTransactionByHash("0x015d771f4d31ee64fb964bc163f2479b6ba15d78555e936868ad24cca55909be ")
   .then(res => {
     console.log(res)
   })
   .catch(err => {
-    console.log("错误请求")
+    console.log("Wrong reques")
   });
-api
+zvcjs
+  .api
   .GetBlockHashByHeight(2119)
   .then(res => {
     console.log(res)
   })
   .catch(err => {
-    console.log("错误请求")
+    console.log("Wrong reques")
   });
-api
+zvcjs
+  .api
   .GetNonce('zv9eae37dbc0c3a076fe9981fbb050ebd29dfa9f3a6b1a4a8ef91e9604356e8801')
   .then(res => {
     console.log(res)
   })
   .catch(err => {
-    console.log("错误请求")
-  });*/
-/*
-api
+    console.log("Wrong reques")
+  });
+zvcjs
+  .api
   .SendTransaction('0x9f42787b9bc66b7aa14d0bc436b5a921160feba9cd0279162df18526d5f6b0b0')
   .then(res => {
     console.log(res)
   })
   .catch(err => {
-    console.log("错误请求")
-  })
-
-api
+    console.log("Wrong reques")
+  });
+zvcjs
+  .api
   .Balance('zv9eae37dbc0c3a076fe9981fbb050ebd29dfa9f3a6b1a4a8ef91e9604356e8801')
   .then(res => {
     console.log(res)
   })
   .catch(err => {
-    console.log("错误请求")
+    console.log("Wrong reques")
   });
 
 zvcjs
@@ -66,11 +71,10 @@ zvcjs
     console.log(res)
   })
   .catch(err => {
-    console.log("错误请求")
+    console.log("Wrong reques")
   })
-
-
-let buf = Buffer.from([
+  //getSigner
+  let buf = Buffer.from([
   194,
   247,
   64,
@@ -142,7 +146,7 @@ const res = zvcjs
   .sign
   .getSigner(buf, pek)
 console.log(res);
-
+// gettx
 const tx = zvcjs
   .account
   .genHash({
@@ -157,9 +161,8 @@ const tx = zvcjs
     extra: 'JXU4RkQ5JXU5MUNDJXU2NjJGJXU4OTgxJXU1MkEwJXU1QkM2JXU3Njg0JXU1MTg1JXU1QkI5MTIzNDU2'
   })
 console.log(tx);
-
+// createdPrivKeyAndpubKeyAndaddr
 const PrivKeyAndpubKeyAndaddr = zvcjs
   .account
   .createdPrivKeyAndpubKeyAndaddr()
 console.log(PrivKeyAndpubKeyAndaddr);
-*/
