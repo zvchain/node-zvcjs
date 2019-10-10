@@ -5,8 +5,8 @@ const secp256k1 = require('secp256k1')
  * @return {string} tx
  */
 const getSigner = (txbuf, privateKeybuf) => {
-  let {signature, recover} = secp256k1.sign(txbuf, privateKeybuf)
-  let oneByte = Buffer.from([recover])
+  let {signature, recovery} = secp256k1.sign(txbuf, privateKeybuf)
+  let oneByte = Buffer.from([recovery])
   signature = Buffer.concat([
     signature, oneByte
   ], 65)
