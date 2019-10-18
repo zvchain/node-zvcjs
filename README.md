@@ -5,7 +5,7 @@
 zvcjs
 
 ```js
-const zvcjs = require("./index");
+const zvcjs = require("zvcjs");
 ```
 
 use zvcjs api. See details https://github.com/zvchain/zvchain/wiki/rpc_api_en
