@@ -1,13 +1,27 @@
 {
   "name": "zvcjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
-  "author": "",
+  "homepage": "https://github.com/zvchain/node-zvcjs",
+  "keywords": [
+    "nodejs",
+    "rpc",
+    "zvcjs",
+    "zvchain",
+    "node"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+git@https://github.com/zvchain/node-zvcjs.gitt"
+  },
+  "author": {
+    "name": "cuijian",
+    "email": "cuijian1453475013@gmail.com"
+  },
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0",
