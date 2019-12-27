@@ -1,4 +1,4 @@
 {
-  "eslint.enable": true,
-  "eslint.autoFixOnSave": false
+    "tslint.autoFixOnSave": true,
+    "tslint.configFile": "./tslint.json"
 }

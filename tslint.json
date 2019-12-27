@@ -1,0 +1,27 @@
+{
+    "root": false,
+    "defaultSeverity": "error",
+    "extends": [
+        "tslint:recommended"
+    ],
+    "jsRules": {},
+    "rules": {
+        "no-console": [false],
+        "quotemark": [false],
+        "semicolon": [false],
+        "interface-name": [true, "never-prefix"],
+        "object-literal-sort-keys": [false],
+        "max-classes-per-file": [false],
+        "no-empty": [false],
+        "variable-name": [false],
+        "no-empty-interface": [false],
+        "one-line": [false],
+        "interface-over-type-literal": [false],
+        "no-shadowed-variable": [false],
+        "forin": [false],
+        "ban-types": [false],
+        "no-namespace": [false],
+        "no-reference": [false]
+    },
+    "rulesDirectory": []
+}
