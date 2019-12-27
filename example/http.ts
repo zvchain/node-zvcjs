@@ -1,6 +1,5 @@
 import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from 'axios'
 import JSONbig from 'json-bigint'
-import {Jsonbigint} from '../types/json-bigint'
 
 export class HttpRequest {
   constructor() { }
