@@ -27,7 +27,7 @@
     /* Strict Type-Checking Options */
     // "strict": true,                           /* strict的值为true或false，用于指定是否启动所有类型检查，如果设为true则会同时开启下面这几个严格类型检查，默认为false。 */
     // "noImplicitAny": true,                 /* noImplicitAny的值为true或false，如果我们没有为一些值设置明确的类型，编译器会默认认为这个值为any类型，如果将noImplicitAny设为true，则如果没有设置明确的类型会报错，默认值为false。 */
-    "strictNullChecks": true,              /* strictNullChecks的值为true或false，这个配置项我们在前面课程讲过了，当设为true时，null和undefined值不能赋值给非这两种类型的值，别的类型的值也不能赋给他们， 除了any类型，还有个例外就是undefined可以赋值给void类型。 */
+    "strictNullChecks": false,              /* strictNullChecks的值为true或false，这个配置项我们在前面课程讲过了，当设为true时，null和undefined值不能赋值给非这两种类型的值，别的类型的值也不能赋给他们， 除了any类型，还有个例外就是undefined可以赋值给void类型。 */
     // "strictFunctionTypes": true,           /* strictFunctionTypes的值为true或false，用来指定是否使用函数参数双向协变检查。还记得我们讲类型兼容性的时候讲过函数参数双向协变的这个例子： */
     // "strictBindCallApply": true,           /* strictBindCallApply的值为true或false，设为true后会对bind、call和apply绑定的方法的参数的检测是严格检测的 */
     // "strictPropertyInitialization": true,  /* strictPropertyInitialization的值为true或false，设为true后会检查类的非undefined属性是否已经在构造函数里初始化，如果要开启这项，需要同时开启strictNullChecks，默认为false。 */
@@ -63,7 +63,7 @@
     // "inlineSources": true,                 /* inlineSources的值是true或false，用于指定是否进一步将.ts文件的内容也包含到输出文件中。 */
 
     /* Experimental Options */
-    "experimentalDecorators": true,        /* experimentalDecorators的值是true或false，用于指定是否启用实验性的装饰器特性 */
+    // "experimentalDecorators": true,        /* experimentalDecorators的值是true或false，用于指定是否启用实验性的装饰器特性 */
     // "emitDecoratorMetadata": true,         /* emitDecoratorMetadata的值为true或false，用于指定是否为装饰器提供元数据支持，关于元数据，也是ES6的新标准，可以通过Reflect提供的静态方法获取元数据，如果需要使用Reflect的一些方法，需要引入ES2015.Reflect这个库 */
   },
   // "files": [], // files可以配置一个数组列表，里面包含指定文件的相对或绝对路径，编译器在编译的时候只会编译包含在files中列出的文件。如果不指定，则取决于有没有设置include选项，如果没有include选项，则默认会编译根目录以及所有子目录中的文件。这里列出的路径必须是指定文件，而不是某个文件夹，而且不能使用* ? **/ 等通配符
@@ -72,7 +72,7 @@
   // ], // include也可以指定要编译的路径列表，但是和files的区别在于，这里的路径可以是文件夹，也可以是文件，可以使用相对和绝对路径，而且可以使用通配符，比如"./src"即表示要编译src文件夹下的所有文件以及子文件夹的文件。
   "exclude": [
     "./dist",
-    "example"
+    "./example/*"
   ] // exclude表示要排除的、不编译的文件，他也可以指定一个列表，规则和include一样，可以是文件可以是文件夹，可以是相对路径或绝对路径，可以使用通配符。
   // "extends": "", // extends可以通过指定一个其他的tsconfig.json文件路径，来继承这个配置文件里的配置，继承来的文件的配置会覆盖当前文件定义的配置。TS在3.2版本开始，支持继承一个来自Node.js包的tsconfig.json配置文件.
   // "compileOnSave": true // compileOnSave的值是true或false，如果设为true，在我们编辑了项目中文件保存的时候，编辑器会根据tsconfig.json的配置重新生成文件，不过这个要编辑器支持。

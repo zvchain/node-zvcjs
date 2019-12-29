@@ -1,5 +1,5 @@
-import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig } from 'axios'
-import JSONbig from 'json-bigint'
+import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig, AxiosResponse } from 'axios'
+import JSONbig = require('json-bigint')
 export class HttpRequest {
   constructor() { }
   public request(options: AxiosRequestConfig) {
@@ -32,7 +32,7 @@ export class HttpRequest {
       },
     );
     instance.interceptors.response.use(
-      (res) => {
+      (res): any => {
         const { data, status } = res;
         return {
           data,
