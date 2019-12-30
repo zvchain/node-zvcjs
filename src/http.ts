@@ -1,10 +1,13 @@
 import axios, { AxiosInstance, AxiosProxyConfig, AxiosRequestConfig, AxiosResponse } from 'axios'
 import JSONbig = require('json-bigint')
-export class HttpRequest {
-  constructor() { }
+class HttpRequest {
+  constructor(private baseUrl: string) {
+    // this.baseUrl = baseUrl
+  }
   public request(options: AxiosRequestConfig) {
     const instance = axios.create();
     options = Object.assign(this.getInsideConfig(), options);
+    console.log("options", options)
     this.interceptors(instance, options.url);
     return instance(options);
   }
@@ -12,6 +15,7 @@ export class HttpRequest {
     const config = {
       headers: {
         "Content-Type": "application/json",
+        "baseURL": this.baseUrl,
       },
       transformResponse: [
         // tslint:disable-next-line:only-arrow-functions
@@ -59,3 +63,4 @@ export class HttpRequest {
     );
   }
 }
+export default HttpRequest

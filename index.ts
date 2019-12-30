@@ -1,3 +1,5 @@
-import JSONbig = require('json-bigint')
-import "./src/http"
-let a = JSONbig.parse({name: '000'})
+
+// import zvcjs = require('./src/api')
+import zvcjs from './src/api'
+
+export default {zvcjs}

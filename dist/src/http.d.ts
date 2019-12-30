@@ -1,7 +1,9 @@
 import { AxiosRequestConfig } from 'axios';
-export declare class HttpRequest {
-    constructor();
+declare class HttpRequest {
+    private baseUrl;
+    constructor(baseUrl: string);
     request(options: AxiosRequestConfig): import("axios").AxiosPromise<any>;
     private getInsideConfig;
     private interceptors;
 }
+export default HttpRequest;
