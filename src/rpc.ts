@@ -1,18 +1,7 @@
 
 import http from './http'
-interface Sign {
-    source: string,
-    target: string,
-    value: number, // zvcjs.account.NewAssetFromString('1 zvc')
-    gas_limit: number,
-    gas_price: number,
-    type: number,
-    nonce: number,
-    data: string// base64
-    sign: string,
-    extra_data: string,     // base64
-}
-class Zvcjs extends http {
+
+export class Zvcjs extends http {
   constructor( public baseURL: string){
       super(baseURL)
   }
@@ -99,5 +88,3 @@ class Zvcjs extends http {
     })
   }
 }
-
-export default Zvcjs

@@ -1,5 +1,3 @@
 
-// import zvcjs = require('./src/api')
-import zvcjs from './src/api'
-
-export default {zvcjs}
+export { Zvcjs as zvcjs} from './src/rpc'
+// module.exports = exports['default'];
