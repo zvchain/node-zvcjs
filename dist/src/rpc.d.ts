@@ -1,17 +1,5 @@
 import http from './http';
-interface Sign {
-    source: string;
-    target: string;
-    value: number;
-    gas_limit: number;
-    gas_price: number;
-    type: number;
-    nonce: number;
-    data: string;
-    sign: string;
-    extra_data: string;
-}
-export declare class Zvcjs extends http {
+export declare class Rpc extends http {
     baseURL: string;
     constructor(baseURL: string);
     setParams: (nameSpace: string, method: string, ...params: any) => string;
@@ -25,4 +13,3 @@ export declare class Zvcjs extends http {
     minerInfo: (address: string, detail: string) => import("axios").AxiosPromise<any>;
     SendTransaction: (tx: Sign) => import("axios").AxiosPromise<any>;
 }
-export {};

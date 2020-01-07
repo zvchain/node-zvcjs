@@ -1,5 +1,11 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var account_1 = require("./src/account");
+exports.account = account_1.Account;
 var rpc_1 = require("./src/rpc");
-exports.zvcjs = rpc_1.Zvcjs;
+exports.rpc = rpc_1.Rpc;
+var sign_1 = require("./src/sign");
+exports.signer = sign_1.Signer;
+var transaction_1 = require("./src/transaction");
+exports.transaction = transaction_1.Transaction;
 // module.exports = exports['default'];
