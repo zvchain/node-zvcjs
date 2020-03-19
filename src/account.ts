@@ -133,14 +133,11 @@ export class Account{
     buffer = buffer.concat(this.Encode(nonceHexString, "hex"));
 
     buffer.push(options.type);
-    console.log(options.data)
     buffer = buffer.concat(this.Encode(options.data, "base64"));
-    console.log(2)
     buffer = buffer.concat(this.Encode(options.extra_data, "base64"));
 
     const sha256_buf = Buffer.from(buffer);
     const SHA_256 = new jsSHA("SHA-256", "HEX");
-    console.log("txBuf", sha256_buf.toString("hex"));
     SHA_256.update(sha256_buf.toString("hex"));
     SHA_256.getHash("HEX");
     return "0x" + SHA_256.getHash("HEX");

@@ -16,7 +16,6 @@ export class Rpc extends http {
   }
   public Balance = (address: string): Promise<any> => {
     const params = this.setParams("Gzv", 'balance', address)
-    console.log(params)
     return this.request({
       method: 'post',
       data: params,
