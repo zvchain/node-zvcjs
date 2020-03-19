@@ -17,11 +17,24 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = __importDefault(require("./http"));
-var Rpc = /** @class */ (function (_super) {
-    __extends(Rpc, _super);
-    function Rpc(baseURL) {
+var Zvcjs = /** @class */ (function (_super) {
+    __extends(Zvcjs, _super);
+    function Zvcjs(baseURL) {
         var _this = _super.call(this, baseURL) || this;
         _this.baseURL = baseURL;
+        _this.setParams = function (nameSpace, method) {
+            var params = [];
+            for (var _i = 2; _i < arguments.length; _i++) {
+                params[_i - 2] = arguments[_i];
+            }
+            var option = {
+                method: nameSpace + "_" + method,
+                params: params,
+                id: 1,
+                jsonrpc: "2.0",
+            };
+            return JSON.stringify(option);
+        };
         _this.Balance = function (address) {
             var params = _this.setParams("Gzv", 'balance', address);
             console.log(params);
@@ -95,21 +108,8 @@ var Rpc = /** @class */ (function (_super) {
                 data: params,
             });
         };
-        _this.setParams = function (nameSpace, method) {
-            var params = [];
-            for (var _i = 2; _i < arguments.length; _i++) {
-                params[_i - 2] = arguments[_i];
-            }
-            var option = {
-                method: nameSpace + "_" + method,
-                params: params,
-                id: 1,
-                jsonrpc: "2.0",
-            };
-            return JSON.stringify(option);
-        };
         return _this;
     }
-    return Rpc;
+    return Zvcjs;
 }(http_1.default));
-exports.default = Rpc;
+exports.Zvcjs = Zvcjs;

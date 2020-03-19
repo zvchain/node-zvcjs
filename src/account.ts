@@ -2,7 +2,7 @@ import { HexBase64BinaryEncoding, randomBytes } from 'crypto'
 import jsSHA from "jssha";
 import secp256k1 from 'secp256k1'
 
-export default class Account{
+export class Account{
   constructor() { }
   public createdPrivKeyAndpubKeyAndaddr(): Address{
     // tslint:disable-next-line:one-variable-per-declaration
@@ -131,7 +131,7 @@ export default class Account{
     SHA_256.getHash("HEX");
     return "0x" + SHA_256.getHash("HEX");
   };
-    private Encode = (data: string, _type) => {
+  private Encode = (data: string, _type) => {
     let result = [];
     if (data.length % 2 !== 0) {
       data = "0" + data;

@@ -1,5 +1,3 @@
 
-import Account from './src/account'
-import Rpc from './src/rpc'
+export { Zvcjs as zvcjs} from './src/rpc'
 // module.exports = exports['default'];
-export  {Account, Rpc}

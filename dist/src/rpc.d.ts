@@ -1,8 +1,21 @@
 import http from './http';
-export default class Rpc extends http {
+interface Sign {
+    source: string;
+    target: string;
+    value: number;
+    gas_limit: number;
+    gas_price: number;
+    type: number;
+    nonce: number;
+    data: string;
+    sign: string;
+    extra_data: string;
+}
+export declare class Zvcjs extends http {
     baseURL: string;
     constructor(baseURL: string);
-    Balance: (address: string) => import("axios").AxiosPromise<any>;
+    setParams: (nameSpace: string, method: string, ...params: any) => string;
+    Balance: (address: string) => Promise<any>;
     GetBlockByHeight: (height: Number) => import("axios").AxiosPromise<any>;
     GetblockHeight: () => import("axios").AxiosPromise<any>;
     GetBlockByHash: (hash: string) => import("axios").AxiosPromise<any>;
@@ -11,5 +24,5 @@ export default class Rpc extends http {
     GetNonce: (address: string) => import("axios").AxiosPromise<any>;
     minerInfo: (address: string, detail: string) => import("axios").AxiosPromise<any>;
     SendTransaction: (tx: Sign) => import("axios").AxiosPromise<any>;
-    private setParams;
 }
+export {};
