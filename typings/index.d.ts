@@ -35,3 +35,15 @@ interface GenHash{
   data?: StringDataFormat, // base64
   extra_data?:StringDataFormat// base64
 }
+interface TransactionType {
+  url:string,
+  sk:StringDataFormat,
+  source: zvAdderss,
+  target: zvAdderss,
+  value: number, // zvcjs.account.NewAssetFromString('1 zvc')
+  gas_limit: number,
+  gas_price: number,
+  type: number,
+  data: string// base64
+  extra_data: string,     // base64
+}

@@ -1,7 +1,7 @@
 
 import http from './http'
 
-export class Zvcjs extends http {
+export class Rpc extends http {
   constructor( public baseURL: string){
       super(baseURL)
   }

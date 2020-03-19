@@ -73,7 +73,7 @@ export class Account{
     const adderss = sha3_256.getHash("HEX");
     return "zv" + adderss;
   }
-  public genHash = ({ ...options }: GenHash): StringDataFormat => {
+  public getHash = ({ ...options }: GenHash): StringDataFormat => {
     const {
       source,
       target,
@@ -86,18 +86,18 @@ export class Account{
       extra_data,
     } = options;
 
-    if (
-      !source ||
-      !target ||
-      !value ||
-      !gas_limit ||
-      !gas_price ||
-      !nonce  ||
-      !type
-    ) {
-      throw new Error("Parameter error");
-      return;
-    }
+    // if (
+    //   !source ||
+    //   !target ||
+    //   !value ||
+    //   !gas_limit ||
+    //   !gas_price ||
+    //   !nonce  ||
+    //   !type
+    // ) {
+    //   throw new Error("Parameter error");
+    //   return;
+    // }
     // if (
     //   /^-[0-9]*[1-9][0-9]*$/.test(value) ||
     //   /^-[0-9]*[1-9][0-9]*$/.test(gas_limit) ||
@@ -106,13 +106,25 @@ export class Account{
     //   throw new Error("Enter legal number");
     // }
     let buffer = [];
-    const srcString = options.source.substr(2);
-    const targetString = options.target.substr(2);
+    const reg = /^[Zz][Vv]/
+    let srcString: string;
+    if (reg.test( options.source)) {
+      srcString = options.source.substr(2);
+    }else{
+      srcString = options.source
+    }
+    let targetString: string;
+    if (reg.test( options.source)) {
+      targetString = options.target.substr(2);
+    }else{
+      targetString = options.target
+    }
+    // const srcString = options.source.substr(2);
+    // const targetString = options.target.substr(2);
     const valueHexString = BigInt(options.value).toString(16);
     const gasLimitHexString = BigInt(options.gas_limit).toString(16);
     const gasPriceHexString = BigInt(options.gas_price).toString(16);
     const nonceHexString = BigInt(options.nonce).toString(16);
-
     buffer = buffer.concat(this.Encode(srcString, "hex"));
     buffer = buffer.concat(this.Encode(targetString, "hex"));
     buffer = buffer.concat(this.Encode(valueHexString, "hex"));
@@ -121,7 +133,9 @@ export class Account{
     buffer = buffer.concat(this.Encode(nonceHexString, "hex"));
 
     buffer.push(options.type);
+    console.log(options.data)
     buffer = buffer.concat(this.Encode(options.data, "base64"));
+    console.log(2)
     buffer = buffer.concat(this.Encode(options.extra_data, "base64"));
 
     const sha256_buf = Buffer.from(buffer);
@@ -141,7 +155,7 @@ export class Account{
     }
     const dataTmp = Buffer.from(data, _type);
     const lenTmp = Buffer.alloc(4);
-    lenTmp.writeUInt32BE(Buffer.byteLength(data, _type), null);
+    lenTmp.writeUInt32BE(Buffer.byteLength(data, _type));
     result = result.concat(this.bufferTobytes(lenTmp));
     result = result.concat(this.bufferTobytes(dataTmp));
     return result;
