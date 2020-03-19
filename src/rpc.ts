@@ -1,20 +1,11 @@
 
 import http from './http'
 
-export class Zvcjs extends http {
+export default class Rpc extends http {
   constructor( public baseURL: string){
       super(baseURL)
   }
-  public setParams = (nameSpace: string, method: string, ...params: any): string => {
-    const option = {
-      method: nameSpace + "_" + method,
-      params,
-      id: 1,
-      jsonrpc: "2.0",
-    }
-    return JSON.stringify(option)
-  }
-  public Balance = (address: string): Promise<any> => {
+  public Balance = (address: string)=> {
     const params = this.setParams("Gzv", 'balance', address)
     console.log(params)
     return this.request({
@@ -86,5 +77,14 @@ export class Zvcjs extends http {
       url: this.baseURL,
       data: params,
     })
+  }
+  private setParams = (nameSpace: string, method: string, ...params: any): string => {
+    const option = {
+      method: nameSpace + "_" + method,
+      params,
+      id: 1,
+      jsonrpc: "2.0",
+    }
+    return JSON.stringify(option)
   }
 }
