@@ -2,6 +2,8 @@ const zvcjs = require("./index");
 const HttpRequest = require("./http.js");
 //api rpc
 zvcjs.api.newApi("http://node1.zvchain.io:8101"); //test net work
+zvcjs.account.createAddrs('0x7d45c0be7872adda7b4abbdbd09ed5cf3cbc469f4b2e1a9f5724073638383450')
+console.log('zv', zvcjs.account.createAddrs('0x7d45c0be7872adda7b4abbdbd09ed5cf3cbc469f4b2e1a9f5724073638383450'));
 /*
 zvcjs
   .api
@@ -206,50 +208,50 @@ zvcjs.api.Balance(addr).then(res => {
 //     });
 // }
 
-const testFunc = async () => {
-  let textJson = await new HttpRequest()
-    .request({
-      method: "get",
-      url: "http://10.0.0.174:8888/gen"
-    })
-    .then(res => res.data);
-  console.log(textJson);
-  console.log(textJson.sk);
-  const address = zvcjs.account.createAddrs(textJson.sk);
-  console.log("address :", address);
-  const tx = zvcjs.account.genHash({
-    src: address,
-    target: textJson.tx.Target,
-    value: textJson.tx.Value + "",
-    gasLimit: textJson.tx.GasLimit + "",
-    gasPrice: textJson.tx.GasPrice + "",
-    nonce: textJson.tx.Nonce + "",
-    typ: textJson.tx.Type + "",
-    data: textJson.tx.Data, // base64
-    extra: textJson.tx.ExtraData // base64
-  });
-  console.log("tx:", tx);
-  const signString = zvcjs.sign.getSigner(
-    Buffer.from(tx.substr(2), "hex"),
-    Buffer.from(textJson.sk.substr(2).padStart(64, "0"), "hex")
-  );
-  console.log("signString:", signString);
-  if (signString === textJson.sign) return true;
-  return false;
-};
+// const testFunc = async () => {
+//   let textJson = await new HttpRequest()
+//     .request({
+//       method: "get",
+//       url: "http://10.0.0.174:8888/gen"
+//     })
+//     .then(res => res.data);
+//   console.log(textJson);
+//   console.log(textJson.sk);
+//   const address = zvcjs.account.createAddrs(textJson.sk);
+//   console.log("address :", address);
+//   const tx = zvcjs.account.genHash({
+//     src: address,
+//     target: textJson.tx.Target,
+//     value: textJson.tx.Value + "",
+//     gasLimit: textJson.tx.GasLimit + "",
+//     gasPrice: textJson.tx.GasPrice + "",
+//     nonce: textJson.tx.Nonce + "",
+//     typ: textJson.tx.Type + "",
+//     data: textJson.tx.Data, // base64
+//     extra: textJson.tx.ExtraData // base64
+//   });
+//   console.log("tx:", tx);
+//   const signString = zvcjs.sign.getSigner(
+//     Buffer.from(tx.substr(2), "hex"),
+//     Buffer.from(textJson.sk.substr(2).padStart(64, "0"), "hex")
+//   );
+//   console.log("signString:", signString);
+//   if (signString === textJson.sign) return true;
+//   return false;
+// };
 
-let a = 0;
-const fortest = () => {
-  testFunc().then(res => {
-    a++;
-    console.log(a);
-    if (!res || a === 10000000) {
-      return;
-    } else {
-      fortest();
-    }
-  });
-};
-console.time();
-fortest();
-console.timeEnd();
+// let a = 0;
+// const fortest = () => {
+//   testFunc().then(res => {
+//     a++;
+//     console.log(a);
+//     if (!res || a === 10000000) {
+//       return;
+//     } else {
+//       fortest();
+//     }
+//   });
+// };
+// console.time();
+// fortest();
+// console.timeEnd();

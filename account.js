@@ -83,6 +83,40 @@ function createAddrs(privKey) {
   const adderss = sha3_256.getHash("HEX");
   return "zv" + adderss;
 }
+function skToAddrsAnPk(privKey) {
+  let pubKeyArray, pubKeyArrayLeft, pubKeyArrayRight;
+  const pubKey = secp256k1.publicKeyCreate(
+    Buffer.from(privKey.substr(2).padStart(64, "0"), "hex"),
+    false
+  );
+  pubKeyArray = bufferTobytes(pubKey);
+  pubKeyArray.shift();
+
+  pubKeyArrayRight = pubKeyArray.slice(pubKeyArray.length / 2);
+  pubKeyArrayLeft = pubKeyArray.slice(0, pubKeyArray.length / 2);
+
+  do {
+    if (pubKeyArrayLeft[0] === 0) {
+      pubKeyArrayLeft.shift();
+    }
+    if (pubKeyArrayRight[0] === 0) {
+      pubKeyArrayRight.shift();
+    }
+  } while (!(pubKeyArrayLeft[0] !== 0 && pubKeyArrayRight[0] !== 0));
+
+  pubKeyArray = pubKeyArrayLeft.concat(pubKeyArrayRight);
+
+  const sha3_256 = new jsSHA("SHA3-256", "HEX", {
+    numRounds: parseInt(1, 10)
+  });
+  sha3_256.update(Buffer.from(pubKeyArray).toString("hex"));
+  const adderss = sha3_256.getHash("HEX");
+  return {
+    sk: privKey,
+    pk: "0x" + pubKey.toString("hex"),
+    zv: "zv" + adderss
+  };
+}
 /**
  *
  * @param {*} data
@@ -191,6 +225,7 @@ const NewAssetFromString = n => {
 };
 module.exports = {
   NewAssetFromString,
+  skToAddrsAnPk,
   genHash,
   createdPrivKeyAndpubKeyAndaddr,
   createAddrs
